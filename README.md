@@ -1,7 +1,7 @@
 ## Description
 #### Basic blog with React and Firebase Authentication
 
-![Login Page]
+## Login Page
+<img src="https://i.ibb.co/NNBJyX6/Untitled.png">
 
-(https://i.ibb.co/NNBJyX6/Untitled.png)
 
