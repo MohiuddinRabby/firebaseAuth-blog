@@ -1,5 +1,8 @@
 import React from "react";
+import Auth, { useAuth } from "./useAuth";
 const Login = () => {
+  const auth = useAuth();
+  console.log(auth);
   return (
     <div>
       <div className="container">
@@ -18,9 +21,17 @@ const Login = () => {
                   </div>
                 </div>
                 <div className="col-md-3">
-                  <button className="btn btn-block btn-outline-danger">
-                    <i className="fab fa-google-plus-square"></i> Google sing in
-                  </button>
+                  {auth.user ? (
+                    <button onClick={auth.signOutWithGoogle}>signedIn</button>
+                  ) : (
+                    <button
+                      className="btn btn-block btn-outline-danger"
+                      onClick={auth.signInWithGoogle}
+                    >
+                      <i className="fab fa-google-plus-square"></i> Google sing
+                      in
+                    </button>
+                  )}
                   <br />
                   <button className="btn btn-outline-primary btn-block">
                     <i className="fab fa-facebook"></i> FaceBook sing in
