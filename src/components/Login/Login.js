@@ -1,7 +1,14 @@
 import React from "react";
 import Auth, { useAuth } from "./useAuth";
+import { useHistory } from "react-router-dom";
 const Login = () => {
-  const auth = useAuth();
+  let history = useHistory();
+  const auth = useAuth()
+  const handleSignIn = () => {
+    auth.signInWithGoogle().then((res) => {
+      history.replace("/blog");
+    });
+  };
   console.log(auth);
   return (
     <div>
@@ -21,17 +28,12 @@ const Login = () => {
                   </div>
                 </div>
                 <div className="col-md-3">
-                  {auth.user ? (
-                    <button onClick={auth.signOutWithGoogle}>signedIn</button>
-                  ) : (
-                    <button
-                      className="btn btn-block btn-outline-danger"
-                      onClick={auth.signInWithGoogle}
-                    >
-                      <i className="fab fa-google-plus-square"></i> Google sing
-                      in
-                    </button>
-                  )}
+                  <button
+                    className="btn btn-block btn-outline-danger"
+                    onClick={handleSignIn}
+                  >
+                    <i className="fab fa-google-plus-square"></i> Google sing in
+                  </button>
                   <br />
                   <button className="btn btn-outline-primary btn-block">
                     <i className="fab fa-facebook"></i> FaceBook sing in

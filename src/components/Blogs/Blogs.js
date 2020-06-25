@@ -2,11 +2,11 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import Posts from "../Posts/Posts";
-import { useAuth } from "../Login/useAuth";
+import Auth, { useAuth } from "../Login/useAuth";
 
 const Blogs = () => {
   const auth = useAuth();
-  console.log("blog page", auth.user);
+  // console.log("blog page", auth.user);
   const [blog, setBlog] = useState([]);
   useEffect(() => {
     postData();
@@ -44,10 +44,8 @@ const Blogs = () => {
                   Home
                 </a>
               </li>
-              <li className="nav-item ">
-                <a className="nav-link" href="#">
-                  Log out
-                </a>
+              <li className="nav-item py-2">
+               <button onClick={auth.signOutWithGoogle}>Logout</button>
               </li>
               <li className="nav-item ">
                 {auth.user ? (
